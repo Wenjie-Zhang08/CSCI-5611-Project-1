@@ -65,11 +65,11 @@ Camera can rotate along its x axis and y axis and it can translate based on its 
 
 **tanks** - stands for the agents
 
-*Models coming from https://quaternius.com/index.html*
+*Models come from https://quaternius.com/index.html*
 
 **Desert-Bush** - floor texture
 
-*Texture coming from https://assetstore.unity.com/packages/2d/textures-materials/glovergames-free-ground-textures-135418*
+*Texture comes from https://assetstore.unity.com/packages/2d/textures-materials/glovergames-free-ground-textures-135418*
 
 
 
