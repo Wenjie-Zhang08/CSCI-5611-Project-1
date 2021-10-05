@@ -2,6 +2,7 @@
  Agents Collision in 3D Enviroment
 
 # Video
+Uploaded in this repository, Proj1.mp4
 
 # List of Features 
 ## Part 2
@@ -17,8 +18,7 @@
 
 
 # Art Contest
-
-
+![ART](https://user-images.githubusercontent.com/81786534/135957016-ec2ebdc2-0712-4fe6-86d0-4bcc921edc29.png)
 
 # User Guide
 Press 'r' to reset the scene
@@ -43,7 +43,7 @@ Press '-' to take away agent from scene
 
 # Discription of Features and Timestamp
 ## Single Agent Navigation
-**Timestamp:**
+**Timestamp:** 00:00-01:05
 
 Agent (i.e. tank) is implimented with path finding and it can short-cut its path while it is moving to the goal. 
 
@@ -53,7 +53,7 @@ It also has the **_orientation smoothing_** function, which allows it to turn sm
 
 
 ## 3D Rendering & Camera
-**Timestamp:**
+**Timestamp:** 01:05-02:05
 
 Camera can rotate along its x axis and y axis and it can translate based on its x axis, y axis and z axis.
 
@@ -73,11 +73,9 @@ Camera can rotate along its x axis and y axis and it can translate based on its 
 
 
 
-
-
-
 ## Multi Agent Planning and Crowd Simulation
-**Timestamp:** 
+**Timestamp:** 2:05-4:05
+
 Simulation is generated on the random generated scene. Press '=' to add agents and press '-' to take agents away.
 Whenever a agent(i.e. tank) reaches its current goal, it will altomatically generate a new goal on the scene and navigate itself to the new goal.
 
