@@ -9,6 +9,8 @@ public class Scene{
  int numAgents,maxNumAgents;
  float agentVel;
  Vec2[] agentF;
+ Boolean canAddNewAgent = true;
+ Boolean canTakeAway = true;
  
  // Obstacles
  int numObstacles,maxNumObstacles;
@@ -79,8 +81,8 @@ public class Scene{
    dist_thres = 200;
    
    // init agents(rad is inited before)
-   numAgents = 15;
-   maxNumAgents = 50;
+   numAgents = 1;
+   maxNumAgents = 20;
    agentVel = 100;
    
    agents = new Agent[maxNumAgents];
@@ -118,6 +120,12 @@ public class Scene{
  
  
  public void initAgents(){
+   for(int i = 0; i < numAgents; i++){
+    generateAgent(i) ;
+   }
+   
+   
+   /*
    float bound = 50;
   for (int i = 0; i < numAgents; i++){
     Vec2 startPos =new Vec2(random(bound,groundW - bound),random(bound,groundH - bound));
@@ -140,6 +148,7 @@ public class Scene{
       Agent agt = new Agent(startPos,goalPos);
       agents[i] = agt;
    }
+   */
  }
  //----------------------------------------
  // Update Scene
@@ -148,6 +157,9 @@ public class Scene{
  public void Update(float dt){
    UpdateAgents(dt);
  }
+ 
+ 
+
  
  private void UpdateAgents(float dt){
    for(int i = 0; i < numAgents; i++){     
@@ -833,11 +845,17 @@ void HandleKeyPressed(){
     changeMode();
     canChangeMode = false; 
   }
+  if(key == '=') addAgent();
+  if(key == '-'){
+    canTakeAway = false;
+    if(numAgents > 0) numAgents--;
+  }
 }
 
 void HandleKeyReleased(){
   if(key == 'm') canChangeMode = true;
-  
+  if(key == '=') canAddNewAgent = true;
+  if(key == '-') canTakeAway = true;
 }
 
 void changeMode(){
@@ -874,6 +892,51 @@ void setMode(){
      break;
   }
   
+}
+
+// check whether it is inside any agent (before index)
+private Boolean insideAnyAgent(int index, Vec2 point){
+  for(int i = 0; i < index; i ++){
+    if(pointInCircle(agents[i].getCurrentLocation(), 2*agentRad,point,0.0))
+      return true;
+  }
+  return false;
+}
+
+private void generateAgent(int index){
+  // first we random generate start
+  float bound = 50;
+  Vec2 startPos =new Vec2(random(bound,groundW - bound),random(bound,groundH - bound));
+  boolean insideAnyCircle = pointInCircleList(circlePos,circleRad,numObstacles,startPos,2);
+  //boolean insideBox = pointInBox(boxTopLeft, boxW, boxH, randPos);
+  while (insideAnyCircle || insideAnyAgent(index,startPos)){
+    startPos = new Vec2(random(bound,groundW - bound),random(bound,groundH - bound));
+    insideAnyCircle = pointInCircleList(circlePos,circleRad,numObstacles,startPos,2);
+      //insideBox = pointInBox(boxTopLeft, boxW, boxH, randPos);
+     }
+  Vec2 goalPos = new Vec2(random(bound,groundW - bound),random(bound,groundH - bound));
+  insideAnyCircle = pointInCircleList(circlePos,circleRad,numObstacles,goalPos,2);
+  //boolean insideBox = pointInBox(boxTopLeft, boxW, boxH, randPos);
+  while (insideAnyCircle){
+    goalPos = new Vec2(random(bound,groundW - bound),random(bound,groundH - bound));
+    insideAnyCircle = pointInCircleList(circlePos,circleRad,numObstacles,goalPos,2);
+    //insideBox = pointInBox(boxTopLeft, boxW, boxH, randPos);
+  }
+  //now we generate a new agent
+  Agent agt = new Agent(startPos,goalPos);
+  agents[index] = agt;
+  
+}
+
+
+private void addAgent(){
+  if(! canAddNewAgent) return;
+  if(numAgents < maxNumAgents){
+    generateAgent(numAgents);
+    numAgents ++;
+    
+  }
+  canAddNewAgent = false;
 }
 
 
