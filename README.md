@@ -51,12 +51,18 @@ Once the agent reachs its goal, it will altomatically generate a new goal and na
 
 It also has the **_orientation smoothing_** function, which allows it to turn smoothly. (Angular velocity is 180 degree per second)
 
+![debugModeSingleAgent](https://user-images.githubusercontent.com/81786534/135963001-b2213382-bb4e-42a4-aa9b-41fe1fcb4a84.png)
+
+
 
 ## 3D Rendering & Camera
 **Timestamp:** 01:05-02:05
 
 Camera can rotate along its x axis and y axis and it can translate based on its x axis, y axis and z axis.
 
+![Camera0](https://user-images.githubusercontent.com/81786534/135963321-ebde8966-b14f-4c16-9b08-b0bdbf8755cc.jpg)
+
+![Camera1](https://user-images.githubusercontent.com/81786534/135963326-aa022115-8415-4649-98b5-3b612c15581c.jpg)
 
 ## Models and Textures - Improved Agent & Scene Rendering
 **windmills** - stands for the obstacles with larger radius
@@ -79,6 +85,7 @@ Camera can rotate along its x axis and y axis and it can translate based on its 
 Simulation is generated on the random generated scene. Press '=' to add agents and press '-' to take agents away.
 Whenever a agent(i.e. tank) reaches its current goal, it will altomatically generate a new goal on the scene and navigate itself to the new goal.
 
+![multiagents](https://user-images.githubusercontent.com/81786534/135963202-4cfab0f0-a52c-4c94-ad32-bdd56e5d153d.jpg)
 
 # Difficulties Encontered
 * Shader program is hard to impliment in this project, so I finally gave up.
